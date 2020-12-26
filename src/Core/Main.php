@@ -10,6 +10,7 @@ class Main
     protected static $instance = null;
     protected $router;
 
+
     public function __construct()
     {
 
@@ -18,7 +19,6 @@ class Main
 
     public function loadRoutes()
     {
-
         require_once __DIR__ . "/../Routes.php";
     }
 

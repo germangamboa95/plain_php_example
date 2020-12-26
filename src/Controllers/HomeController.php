@@ -8,9 +8,9 @@ class HomeController
 
     public function index()
     {
-        $data = ['hi'];
+        $data = "This is a message";
 
-        return jsonResponse($data);
+        dd(render('home', compact('data')));
     }
 
     public function show($id)

@@ -1,10 +1,10 @@
 <?php
 
 use App\Core\Database;
+use App\Core\ViewEngine;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-
-
+use Symfony\Component\HttpFoundation\Response;
 
 if (!function_exists('db')) {
     function db(): PDO
@@ -37,5 +37,16 @@ if (!function_exists('jsonResponse')) {
         $response = new JsonResponse($data);
         $response->send();
         return $response;
+    }
+}
+
+
+if (!function_exists('render')) {
+
+    function render(string $view, array $data)
+    {
+        $r = new ViewEngine();
+        $response = new Response($r->render($view, $data));
+        return $response->send();
     }
 }
