@@ -3,6 +3,8 @@
 
 namespace App\Controllers;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 class HomeController
 {
 
@@ -10,7 +12,9 @@ class HomeController
     {
         $data = "This is a message";
 
-        dd(render('home', compact('data')));
+        $messages = [$data, $data, $data, $data, $data, '<script>alert()</script>'];
+
+        return render('home', compact('data', 'messages'));
     }
 
     public function show($id)
@@ -22,6 +26,7 @@ class HomeController
 
     public function store()
     {
-        return jsonResponse(request()->toArray());
+        $response = new RedirectResponse('/');
+        return $response->send();
     }
 }
