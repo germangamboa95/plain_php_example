@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 if (!function_exists('db')) {
     function db(): PDO
     {
-        Database::instance()->getConnection();
+        return Database::instance()->getConnection();
     }
 }
 
