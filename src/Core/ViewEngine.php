@@ -6,23 +6,21 @@ namespace App\Core;
 class ViewEngine
 {
 
-    protected $directory;
+    protected $twig;
 
     public function __construct()
     {
-        $this->directory = __DIR__ . "/../Views/";
+        $config = ['development' => [], 'production' => [
+            'cache' => __DIR__ . "/../../cache",
+        ]];
+
+        $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../Views/");
+        $this->twig = new \Twig\Environment($loader, $config[$_ENV['env']]);
     }
 
     public function render(string $view, array $args)
     {
-        extract($args);
 
-        ob_start();
-
-        require $this->directory . $view . '.view.php';
-
-        $content = ob_get_clean();
-
-        return $content;
+        return  $this->twig->render($view, $args);
     }
 }

@@ -12,9 +12,11 @@ class HomeController
     {
         $data = "This is a message";
 
+
+
         $messages = [$data, $data, $data, $data, $data, '<script>alert()</script>'];
 
-        return render('home', compact('data', 'messages'));
+        return render('home.twig', ['data' => $data]);
     }
 
     public function show($id)

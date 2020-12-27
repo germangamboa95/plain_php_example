@@ -16,6 +16,7 @@
   },
   "require": {
     "symfony/http-foundation": "^5.2",
-    "vlucas/phpdotenv": "^5.2"
+    "vlucas/phpdotenv": "^5.2",
+    "twig/twig": "^3.0"
   }
 }
